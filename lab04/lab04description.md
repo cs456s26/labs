@@ -140,6 +140,175 @@ Finally, there are verilog control constructs that cannot be synthesized. Specif
 loops cannot be mapped to hardware. Rather they are used to be able to specify multiple instantiations 
 of modules or in a testbench to loop through a series of tests.
 
+
+## Always_block_no_clock
+---
+
+### Code
+
+```verilog
+module always_block_sense(
+    input a_in, 
+    output b_out,
+    output c_out,
+    output d_out
+    );
+
+    reg B;
+    reg C;
+    reg D;
+    
+    always @ (a_in) begin
+    B = a_in;
+    C = B;
+    D = C;
+    end
+    
+    
+    assign b_out = B;
+    assign c_out = C;
+    assign d_out = D;
+
+endmodule
+
+```
+### TestBench
+Create a new file using the testbench below to simulate the verilog code above.
+
+```verilog
+
+module always_no_clock;
+
+
+    reg a;
+    wire b_out, c_out, d_out;
+    
+       
+    localparam time_step = 5;
+    always_not_block_sense always_not_block_sense_tb(.a_in(a),  .b_out(b_out), .c_out(c_out), .d_out(d_out));
+    
+    initial
+        begin
+           
+            
+            a = 0;
+            #time_step;
+            
+            a = 1;
+            #time_step;     
+            
+            
+            a = 1;
+            #time_step;
+                                
+            
+            a = 0;
+            #time_step;
+            
+            a = 1;
+            #time_step;
+                       
+                       
+            a = 0;
+            #time_step;
+           
+           
+        end
+    
+endmodule
+
+```
+
+
+----
+
+## Always_block_clock
+Use the verilog code and the associated testbench below to create a schematic and timing diagram using a clock and an always block. Note the differences between the two schematics with and without a clock.
+
+### Code
+
+```verilog
+module always_block(
+        input clock,
+        input a_in, 
+        output b_out,
+        output c_out,
+        output d_out
+    );
+    
+    reg B;
+    reg C;
+    reg D;
+
+    always @ ( posedge clock ) begin
+        B = a_in;
+        C = B;
+        D = C;
+    end
+    
+    
+    assign b_out = B;
+    assign c_out = C;
+    assign d_out = D;
+endmodule
+
+```
+
+### TestBench
+
+```verilog
+module always_clock;
+
+    reg a, clock;
+    wire b_out, c_out, d_out;
+    
+       
+    localparam time_step = 5;
+    always_block always_block_tb(.clock(clock), .a_in(a),  .b_out(b_out), .c_out(c_out), .d_out(d_out));
+    
+
+    
+    initial
+        begin
+           
+            clock = 0;
+            a = 0;
+            #time_step;
+            
+            clock = 1;
+            a = 1;
+            #time_step;
+            
+            
+            clock = 0;
+            a = 1;
+            #time_step;
+                       
+                       
+            clock = 1;
+            a = 0;
+            #time_step;
+            
+            
+            clock = 0;
+            a = 0;
+            #time_step;
+            
+            
+            clock = 1;
+            a = 1;
+            #time_step;
+                       
+                       
+           
+           
+        end
+    
+    
+endmodule
+
+```
+
 ## Final multiplexor experiment
 Implement the multiplexors shown in code below so
 you can see what actually gets built.
