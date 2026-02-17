@@ -309,6 +309,4 @@ endmodule
 
 ```
 
-## Final multiplexor experiment
-Implement the multiplexors shown in code below so
-you can see what actually gets built.
+
