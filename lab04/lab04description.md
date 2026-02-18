@@ -9,11 +9,14 @@ verilog a designer can inadvertently create latches changing the intended design
 Submit a pdf with the following schematics and related timing diagrams as well as answering the questions indicated with appropriate formatting as in past labs. (Names, assignment, section titles etc.)
 
 More specifically:
-1) (3 pts) schematic and timing diagram for nonblocking assignment in Running an experiment
-2) (3 pts) schematic and timing diagram for blocking assignment in Running an experiment
-3) (2 pts) answer question: What is the difference between the two schematics?
-   Would you have expected this from the Verilog?
-5) (2 pts) two schematics from section with multiplexors from the handout with if-else
+1) (2 pts) schematic and timing diagram for nonblocking assignment in Running an experiment
+2) (2 pts) schematic and timing diagram for blocking assignment in Running an experiment
+3) (2 pts) blocking.v and blocking_tb.v
+4) (0.5 pt) answer question: What is the difference between the two schematics for blocking and non-blocking?
+5) (2 pts) Mux schematic with latch and without
+6) (0.5 pts) answer question: What did you do to remove the latch in Multiplexors with if else
+7) (1 pt) Last two schematics
+
 
 ## Assignment in Verilog
 There are three versions of assignment symbols/uses in Verilog.
@@ -109,7 +112,7 @@ module nonblocking_tb;
 endmodule
 
 ```
-Then change the always @ sensitivity list to only include `in` and use the `=` blocking assignment. Create a testbench that no longer uses the clock and instead, just cycles `a`. See how this is different in terms of the schematic and the timing diagram and explain that difference in your write-up for the lab briefly.
+Now create a module called blocking by starting with the code above and making the following changes: a) change the always @ sensitivity list to only include `in` and b) use the `=` blocking assignment. Then create a testbench module called  blocking_tb that no longer uses the clock and instead, just cycles `a`. See how this is different in terms of the schematic and the timing diagram and explain that difference in your write-up for the lab briefly.
 
 ## Multiplexors with if-else
 Note that a multiplexor is a combinational circuit. To specify one in behavioral verilog the simplest way is to use an if-else statement or a case statement. It is easy to introduce a latch 
@@ -129,7 +132,7 @@ module simple_mux(input [1:0] x, output reg y);
 endmodule
 ```
 Capture that schematic and then change the code to make sure all possibilities of `x` are included
-in the always block by including a default value. Capture this second schematic. Explain in the write-up what you did to remove the latch.
+in the always block by including a default value for y of zero. Capture this second schematic. Explain in the write-up what you did to remove the latch.
 
 Note that in addition to using case or if-else statements, a ternary operator also exists that
 can be used to specify a multiplexor. For example, here is an expression that implements min(a, 10) 
@@ -140,6 +143,7 @@ Finally, there are verilog control constructs that cannot be synthesized. Specif
 loops cannot be mapped to hardware. Rather they are used to be able to specify multiple instantiations 
 of modules or in a testbench to loop through a series of tests.
 
+The following two code examples with corresponding test benches are other examples for you to explore. Capture the schematic and the timing diagram for each for your lab report if you have time.
 
 ## Always_block_no_clock
 ---
@@ -308,5 +312,4 @@ module always_clock;
 endmodule
 
 ```
-
 
