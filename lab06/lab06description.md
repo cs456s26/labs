@@ -16,7 +16,7 @@ The assignment today is to create an asynchronous ROM containing the machine cod
 ## Submission
 Submit a pdf with the following: 
 1) (2 pts) verilog for your asynchronous ROM of machine code
-2) (2 pts) testbench you are using to create a timing diagram with two sample accesses, one from each program
+2) (2 pts) testbench you are using to create a timing diagram that uses a for loop, one for each program
 3) (2 pts) schematic for your asynchronouse ROM for the program indicated below
 4) (2 pts) timing diagram for two accesses to the ROM, one from each program, showing the correct output
 
