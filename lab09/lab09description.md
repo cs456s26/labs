@@ -24,7 +24,7 @@ Submit a pdf with the following:
 1) (2 pts) the verilog module for your asynchronous RAM
 2) (2 pts) the testbench you are using to create a timing diagram
 3) (4 pts) a timing diagram for a read, write, read to the RAM, showing the correct output
-4) (10 pts) At some point during lab today, please bring me your suitcase with your PYNQ board and
+4) (10 pts) At some point in the next week, please bring me your suitcase with your PYNQ board and
    your combination lock for your team showing me all parts are still there. This will be a
    separate grade that will not be dropped in the project portion of your grade. Easy points!
 
