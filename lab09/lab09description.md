@@ -30,7 +30,7 @@ Submit a pdf with the following:
 
 ## A Data Memory Circuit Design
 
-![CPU-RAM](../lab10/CPU-RAM.png)
+![CPU-RAM](../lab09/CPU-RAM.png)
 
 ## A Verilog Module
 Note that a RAM is most easily organized as a two-dimensional net to make indexing easier. 
